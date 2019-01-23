@@ -1,0 +1,9 @@
+8
+Mammut, 778343, 8, John Lynch, false,
+PETZL, 4576, 20, Mary Bloom, true, Jack Brady
+Scarpa, 1223, 1, Richard Devine, false,
+Black Diamond, 8872, 4, Emma Partner, true, Liam Egan
+Mammut, 66473, 0, Mary Bloom, false,
+Climb X, 5564, 16, John Lynch, true, Mark Jackson
+PETZL, 4578, 2, Mary Bloom, false,
+PETZL, 4982, 0, Richard Devine, false,
