@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/cianhiggins/CLionProjects/TransDict/TranslationDictionary.h
+string
+-
+vector
+-
+
+/Users/cianhiggins/CLionProjects/TransDict/main.cpp
+iostream
+-
+TranslationDictionary.h
+/Users/cianhiggins/CLionProjects/TransDict/TranslationDictionary.h
+stdlib.h
+-
+
