@@ -1,0 +1,1 @@
+/usr/bin/c++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/TransDict.dir/TranslationDictionary.cpp.o CMakeFiles/TransDict.dir/main.cpp.o  -o TransDict 

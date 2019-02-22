@@ -1,0 +1,1 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/fsa.dir/tester.cpp.o CMakeFiles/fsa.dir/Node_partial.cpp.o CMakeFiles/fsa.dir/FSA_partial.cpp.o  -o fsa 
