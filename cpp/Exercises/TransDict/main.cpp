@@ -107,7 +107,7 @@ int main() {
     d1.update("chien", "dog");
 
     d1.export_to_file("exported_dict");
-    d2.export_to_file("export_d2");
+    d2.export_to_file("export_dict2");
 
     cout << endl << "compare to thewords vector of each dict:" << endl;
     d1.print_dict();
