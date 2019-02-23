@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/cianhiggins/CLionProjects/FSA/FSA.h
+Node.h
+/Users/cianhiggins/CLionProjects/FSA/Node.h
+
+/Users/cianhiggins/CLionProjects/FSA/Node.h
+string
+-
+vector
+-
+iostream
+-
+
+/Users/cianhiggins/CLionProjects/FSA/tester.cpp
+FSA.h
+/Users/cianhiggins/CLionProjects/FSA/FSA.h
+iostream
+-
+string
+-
+
