@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="61e25312-bbab-4ccf-afd2-35881729fdfa" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/SortComparison.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/SortComparisonTest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../cpp/Exercises/TransDict/.idea/codeStyles/Project.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../cpp/Exercises/TransDict/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../cpp/Exercises/TransDict/CMakeLists.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../cpp/Exercises/TransDict/TranslationDictionary.cpp" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../cpp/Exercises/TransDict/TranslationDictionary.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../cpp/Exercises/TransDict/main.cpp" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../cpp/Exercises/TransDict/translist" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../cpp/Exercises/TransDict/translist2" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Algs_VersCont.iml" afterPath="$PROJECT_DIR$/Algs_VersCont.iml" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../cpp/Exercises/TransDict/testfile.rtf" afterPath="" />
-    </list>
+    <list default="true" id="61e25312-bbab-4ccf-afd2-35881729fdfa" name="Default" comment="" />
     <list id="65f775d2-6b3b-44df-8299-72fb68cf7b19" name="Revert: fix" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -217,12 +201,12 @@
       <option name="presentableId" value="Default" />
       <updated>1550942845375</updated>
       <workItem from="1550942849148" duration="1195000" />
-      <workItem from="1550945726310" duration="750000" />
+      <workItem from="1550945726310" duration="1219000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1945000" />
+    <option name="totallyTimeSpent" value="2414000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="813" extended-state="0" />
