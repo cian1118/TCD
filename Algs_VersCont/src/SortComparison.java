@@ -18,8 +18,22 @@ class SortComparison {
      *
      */
     static double [] insertionSort (double a[]){
+        int n = a.length;
+        for (int i=1; i<n; ++i)
+        {
+            double key = a[i];
+            int j = i-1;
 
-        //todo: implement the sort
+            while (j>=0 && a[j] > key)
+            {
+                a[j+1] = a[j];
+                j = j-1;
+            }
+            a[j+1] = key;
+        }
+
+        return a;
+
     }//end insertionsort
 
     /**
@@ -33,6 +47,7 @@ class SortComparison {
 
         //todo: implement the sort
 
+        return a;
     }//end quicksort
 
     /**
@@ -53,6 +68,7 @@ class SortComparison {
     static double[] mergeSortIterative (double a[]) {
 
         //todo: implement the sort
+        return a;
 
     }//end mergesortIterative
 
@@ -66,6 +82,7 @@ class SortComparison {
      * @return after the method returns, the array must be in ascending sorted order.
      */
     static double[] mergeSortRecursive (double a[]) {
+        return a;
 
 
         //todo: implement the sort
@@ -83,6 +100,7 @@ class SortComparison {
     static double [] selectionSort (double a[]){
 
         //todo: implement the sort
+        return a;
 
     }//end selectionsort
 
