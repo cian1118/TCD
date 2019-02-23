@@ -1,21 +1,50 @@
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.asset.EmptyAsset;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-import static org.junit.Assert.*;
-
-@RunWith(Arquillian.class)
-public class SortComparisonTest {
-    @Deployment
-    public static JavaArchive createDeployment() {
-        return ShrinkWrap.create(JavaArchive.class)
-                .addClass(SortComparison.class)
-                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+//-------------------------------------------------------------------------
+/**
+ *  Test class for SortComparison.java
+ *
+ *  @author
+ *  @version HT 2019
+ */
+@RunWith(JUnit4.class)
+public class SortComparisonTest
+{
+    //~ Constructor ........................................................
+    @Test
+    public void testConstructor()
+    {
+        new SortComparison();
     }
 
+    //~ Public Methods ........................................................
+
+    // ----------------------------------------------------------
+    /**
+     * Check that the methods work for empty arrays
+     */
+    @Test
+    public void testEmpty()
+    {
+    }
+
+
+    // TODO: add more tests here. Each line of code and ech decision in Collinear.java should
+    // be executed at least once from at least one test.
+
+    // ----------------------------------------------------------
+    /**
+     *  Main Method.
+     *  Use this main method to create the experiments needed to answer the experimental performance questions of this assignment.
+     *
+     */
+    public static void main(String[] args)
+    {
+        //TODO: implement this method
+    }
 
 }
