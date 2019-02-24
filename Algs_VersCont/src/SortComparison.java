@@ -1,5 +1,10 @@
 // -------------------------------------------------------------------------
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
 /**
  *  This class contains static methods that implementing sorting of an array of numbers
  *  using different sort algorithms.
@@ -17,15 +22,13 @@ class SortComparison {
      * @return array sorted in ascending order.
      *
      */
-    static double [] insertionSort (double a[]){
+    static double [] insertionSort (double a[]) {
         int n = a.length;
-        for (int i=1; i<n; ++i)
-        {
+        for (int i=1; i<n; ++i) {
             double key = a[i];
             int j = i-1;
 
-            while (j>=0 && a[j] > key)
-            {
+            while (j>=0 && a[j] > key) {
                 a[j+1] = a[j];
                 j = j-1;
             }
@@ -43,12 +46,42 @@ class SortComparison {
      * @return array sorted in ascending order
      *
      */
-    static double [] quickSort (double a[]){
-
-        //todo: implement the sort
-
+    static double [] quickSort (double a[]) {
+        recursiveQuickSort(a, 0, a.length-1);
         return a;
-    }//end quicksort
+    }
+
+    private static void recursiveQuickSort(double a[], int low, int high) {
+        if (high <= low) {
+            return;
+        }
+        int pivotIndex = partition(a, low, high);
+        recursiveQuickSort(a, low, pivotIndex-1);
+        recursiveQuickSort(a, pivotIndex+1, high);
+    }
+
+    private static int partition(double a[], int low, int high) {
+        int i = low;
+        int j = high+1;
+        double pivot = a[low];
+        while (true) {
+            while (a[++i] < pivot) {
+                if (i == high) break;
+            }
+            while (a[--j] > pivot) {
+                if (j == low) break;
+            }
+            if (i >= j) break;
+            double temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+        }
+        a[low] = a[j];
+        a[j] = pivot;
+        return j;
+    }
+    //end quickSort
+
 
     /**
      * Sorts an array of doubles using Merge Sort.
@@ -70,7 +103,7 @@ class SortComparison {
         //todo: implement the sort
         return a;
 
-    }//end mergesortIterative
+    }//end mergeSortIterative
 
 
 
@@ -108,6 +141,14 @@ class SortComparison {
 
 
     public static void main(String[] args) {
+        File data = new File("numbers10.txt");
+        try {
+            FileReader fileIn = new FileReader(data);
+            BufferedReader bf = new BufferedReader(fileIn);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
 
         //todo: do experiments as per assignment instructions
     }

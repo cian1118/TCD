@@ -16,6 +16,8 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class SortComparisonTest
 {
+    private double array10[] =  {2377.88, 2910.66, 8458.14, 1522.08, 5855.37, 1934.75, 8106.23, 1735.31, 4849.83, 1518.63};
+    private double sorted10[] = {1518.63, 1522.08, 1735.31, 1934.75, 2377.88, 2910.66, 4849.83, 5855.37, 8106.23, 8458.14};
     //~ Constructor ........................................................
     @Test
     public void testConstructor()
@@ -40,10 +42,12 @@ public class SortComparisonTest
 
     @Test
     public void insertionSortTest() {
-        double array[] =  {2377.88, 2910.66, 8458.14, 1522.08, 5855.37, 1934.75, 8106.23, 1735.31, 4849.83, 1518.63};
-        double sorted[] = {1518.63, 1522.08, 1735.31, 1934.75, 2377.88, 2910.66, 4849.83, 5855.37, 8106.23, 8458.14};
+        assertArrayEquals(sorted10, SortComparison.insertionSort(array10),0);
+    }
 
-        assertArrayEquals(sorted, SortComparison.insertionSort(array),0);
+    @Test
+    public void quickSortTest() {
+        assertArrayEquals(sorted10, SortComparison.quickSort(array10), 0);
     }
 
 
