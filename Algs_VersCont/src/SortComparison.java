@@ -98,8 +98,13 @@ class SortComparison {
      */
 
     static double[] mergeSortIterative (double a[]) {
-
-        //todo: implement the sort
+        int length = a.length;
+        double[] aux = new double[length];
+        for (int i = 1; i < length; i = i + i) {
+            for (int low = 0; low < length - i; low += i + i) {
+                merge(a, aux, low, low+i-1, Math.min(low+i+i-1,length-1));
+            }
+        }
         return a;
 
     }//end mergeSortIterative
@@ -140,9 +145,9 @@ class SortComparison {
         int i = low, j = mid+1;
         for (int k = low; k <= high; k++) {
             if      (i > mid)           a[k] = aux[j++];
-            else if (j > high)          a[k] = aux[j++];
+            else if (j > high)          a[k] = aux[i++];
             else if (aux[j] < aux[i])   a[k] = aux[j++];
-            else                        a[k] = aux[j++];
+            else                        a[k] = aux[i++];
         }
     }
     //end mergeSortRecursive

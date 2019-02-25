@@ -52,7 +52,7 @@ public class SortComparisonTest
 
     @Test
     public void mergeIterativeTest() {
-
+        assertArrayEquals(sorted10, SortComparison.mergeSortIterative(array10), 0);
     }
 
     @Test
