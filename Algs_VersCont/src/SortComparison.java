@@ -161,8 +161,19 @@ class SortComparison {
      *
      */
     static double [] selectionSort (double a[]){
+        int length = a.length;
+        for (int i = 0; i < length-1; i++) {
+            int minIndex = i;
+            for (int j = i+1; j < length; j++) {
+                if (a[j] < a[minIndex]) {
+                    minIndex = j;
+                }
+            }
 
-        //todo: implement the sort
+            double temp = a[minIndex];
+            a[minIndex] = a[i];
+            a[i] = temp;
+        }
         return a;
 
     }//end selectionsort

@@ -1,5 +1,4 @@
 import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -62,7 +61,7 @@ public class SortComparisonTest
 
     @Test
     public void selectionSortTest() {
-
+        assertArrayEquals(sorted10, SortComparison.selectionSort(array10), 0);
     }
 
     // ----------------------------------------------------------
