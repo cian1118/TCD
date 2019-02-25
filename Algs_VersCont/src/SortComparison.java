@@ -34,7 +34,6 @@ class SortComparison {
             }
             a[j+1] = key;
         }
-
         return a;
 
     }//end insertionsort
@@ -115,12 +114,38 @@ class SortComparison {
      * @return after the method returns, the array must be in ascending sorted order.
      */
     static double[] mergeSortRecursive (double a[]) {
+        double[] aux = new double[a.length];
+        sort(a, aux, 0, a.length-1);
         return a;
 
+    }
 
-        //todo: implement the sort
+    private static void sort(double[] a, double[] aux, int low, int high) {
+        if (high <= low) {
+            return;
+        }
+        int mid = low + (high - low) / 2;
+        sort(a, aux, low, mid);
+        sort(a, aux, mid+1, high);
+        merge(a, aux, low, mid, high);
+    }
 
-    }//end mergeSortRecursive
+    private static void merge(double[] a, double[] aux, int low, int mid, int high) {
+        //copy
+        for (int k = low; k <= high; k++) {
+            aux[k] = a[k];
+        }
+
+        //merge
+        int i = low, j = mid+1;
+        for (int k = low; k <= high; k++) {
+            if      (i > mid)           a[k] = aux[j++];
+            else if (j > high)          a[k] = aux[j++];
+            else if (aux[j] < aux[i])   a[k] = aux[j++];
+            else                        a[k] = aux[j++];
+        }
+    }
+    //end mergeSortRecursive
 
 
     /**

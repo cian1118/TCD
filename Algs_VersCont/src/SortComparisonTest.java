@@ -50,6 +50,20 @@ public class SortComparisonTest
         assertArrayEquals(sorted10, SortComparison.quickSort(array10), 0);
     }
 
+    @Test
+    public void mergeIterativeTest() {
+
+    }
+
+    @Test
+    public void mergeRecursiveTest() {
+        assertArrayEquals(sorted10, SortComparison.mergeSortRecursive(array10), 0);
+    }
+
+    @Test
+    public void selectionSortTest() {
+
+    }
 
     // ----------------------------------------------------------
     /**
@@ -60,6 +74,10 @@ public class SortComparisonTest
     public static void main(String[] args)
     {
         //TODO: implement this method
+        /* runs all the experiments on SortComparison
+        described below and prints the time in milliseconds
+        that each method execution took
+        */
     }
 
 }
