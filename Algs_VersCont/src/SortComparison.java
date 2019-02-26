@@ -1,8 +1,18 @@
 // -------------------------------------------------------------------------
 /*
-============
-|| RESULTS ||
-============
+ ============
+|| RESULTS  ||
+ ============
+*all results below in ms*
+                       insert     quick      merge iter   merge recur   selection
+10 random           |  0.005      0.015      0.072        0.014         0.010
+100 random          |  0.129      0.152      0.070        0.070         0.142
+1000 random         |  9.048      0.718      0.242        0.368         4.875
+1000 few unique     |  1.781      1.378      0.228        0.192         5.222
+1000 nearly ordered |  0.297      4.442      0.118        0.078         0.326
+1000 reverse order  |  0.607      4.361      0.114        0.067         0.682
+1000 sorted         |  0.010      0.452      0.101        0.071         1.281
+
 +---------------------------------------+
 | FIRST RUN                             |
 +---------------------------------------+
@@ -22,7 +32,7 @@ selection : 141941 ns 		| 0.141941 ms
 
 numbers1000.txt
 insertion : 9047960 ns 		| 9.04796 ms
-quick     : 7181612 ns 		| 7.181612 ms
+quick     : 718161 ns 		| 0.718161 ms
 merge iter: 242009 ns 		| 0.242009 ms
 merge recu: 368244 ns 		| 0.368244 ms
 selection : 4874777 ns 		| 4.874777 ms
@@ -87,7 +97,7 @@ selection : 445511 ns 		| 0.445511 ms
 
 numbersNearlyOrdered1000.txt
 insertion : 311068 ns 		| 0.311068 ms
-quick     : 24128946 ns 	| 24.128946 ms
+quick     : 4921479 ns 		| 4.921479 ms
 merge iter: 107289 ns 		| 0.107289 ms
 merge recu: 99374 ns 		| 0.099374 ms
 selection : 289998 ns 		| 0.289998 ms
@@ -106,15 +116,78 @@ merge iter: 116269 ns 		| 0.116269 ms
 merge recu: 68858 ns 		| 0.068858 ms
 selection : 280935 ns 		| 0.280935 ms
 
++---------------------------------------+
+| THIRD RUN                             |
++---------------------------------------+
+numbers10.txt
+insertion : 5719 ns 		| 0.005719 ms
+quick     : 14782 ns 		| 0.014782 ms
+merge iter: 72054 ns 		| 0.072054 ms
+merge recu: 14113 ns 		| 0.014113 ms
+selection : 7982 ns 		| 0.007982 ms
+
+numbers100.txt
+insertion : 91293 ns 		| 0.091293 ms
+quick     : 126494 ns 		| 0.126494 ms
+merge iter: 59687 ns 		| 0.059687 ms
+merge recu: 65409 ns 		| 0.065409 ms
+selection : 125730 ns 		| 0.12573 ms
+
+numbers1000.txt
+insertion : 8878654 ns 		| 8.878654 ms
+quick     : 9734017 ns 		| 9.734017 ms
+merge iter: 647596 ns 		| 0.647596 ms
+merge recu: 2036342 ns 		| 2.036342 ms
+selection : 5618416 ns 		| 5.618416 ms
+
+numbers1000Duplicates.txt
+insertion : 2231502 ns 		| 2.231502 ms
+quick     : 1426022 ns 		| 1.426022 ms
+merge iter: 120946 ns 		| 0.120946 ms
+merge recu: 66762 ns 		| 0.066762 ms
+selection : 415134 ns 		| 0.415134 ms
+
+numbersNearlyOrdered1000.txt
+insertion : 191465 ns 		| 0.191465 ms
+quick     : 3725828 ns 		| 3.725828 ms
+merge iter: 116300 ns 		| 0.1163 ms
+merge recu: 75008 ns 		| 0.075008 ms
+selection : 3289734 ns 		| 3.289734 ms
+
+numbersReverse1000.txt
+insertion : 3629754 ns 		| 3.629754 ms
+quick     : 388369 ns 		| 0.388369 ms
+merge iter: 119426 ns 		| 0.119426 ms
+merge recu: 81000 ns 		| 0.081 ms
+selection : 3335523 ns 		| 3.335523 ms
+
+numbersSorted1000.txt
+insertion : 2944 ns 		| 0.002944 ms
+quick     : 2570029 ns 		| 2.570029 ms
+merge iter: 118192 ns 		| 0.118192 ms
+merge recu: 68978 ns 		| 0.068978 ms
+selection : 298055 ns 		| 0.298055 ms
+*/
+/**
 QUESTIONS:
-a.
-b.
-c.
-d.
-e.
+a. QUICKSORT: The order of the data has an impact on the quicksort algorithm due to the position of the pivot for the sorting. This
+    issue can be resolved by shuffling the data before doing a quicksort or changing the method used to choose the pivot
 
+b. INSERTION SORT: best Omega(n), worst O(n^2)
 
- */
+c. Based on the results obtained either of the mergesort algorithms have the best scalability based on input size, the
+    efficiency of these algorithms does not significantly reduce as the input size increases.
+
+d. Based on the results obtained the recursive implementation of the mergesort algorithm appears to perform better than
+    the iterative implementation.
+
+e. random10 works best with insertion sort
+   random100 works best with merge sort (either implementation)
+   random1000 works best with quicksort
+   all others work best with mergesort (recursive)
+
+*/
+
 import java.io.*;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -329,7 +402,6 @@ class SortComparison {
                 e.printStackTrace();
             }
         }
-
     }
 
     private static void timeSortsInMs(double[] a) {
