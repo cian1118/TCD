@@ -173,7 +173,8 @@ QUESTIONS:
 a. QUICKSORT: The order of the data has an impact on the quicksort algorithm due to the position of the pivot for the sorting. This
     issue can be resolved by shuffling the data before doing a quicksort or changing the method used to choose the pivot
 
-b. INSERTION SORT: best Omega(n), worst O(n^2)
+b. INSERTION SORT: best Omega(n), worst O(n^2). Insertion sort is inefficient for large N and unsorted/reverse inputs,
+    but very efficient for near sorted data and small N.
 
 c. Based on the results obtained either of the mergesort algorithms have the best scalability based on input size, the
     efficiency of these algorithms does not significantly reduce as the input size increases.
@@ -366,77 +367,77 @@ class SortComparison {
     }//end selectionsort
 
 
-    public static void main(String[] args) {
-        FileReader fReader;
-
-        //saving file paths to file array
-        File files[] = new File[7];
-        files[0] = new File("./src/numbers10.txt");
-        files[1] = new File("./src/numbers100.txt");
-        files[2] = new File("./src/numbers1000.txt");
-        files[3] = new File("./src/numbers1000Duplicates.txt");
-        files[4] = new File("./src/numbersNearlyOrdered1000.txt");
-        files[5] = new File("./src/numbersReverse1000.txt");
-        files[6] = new File("./src/numbersSorted1000.txt");
-
-        int arraySize = 1;
-        for (int count = 0; count < 7; count++) {
-            try {
-                fReader = new FileReader(files[count]);
-                BufferedReader bReader = new BufferedReader(fReader);
-
-                if (count < 3) arraySize *= 10;
-                double a[] = new double[arraySize];
-
-                String currLine;
-                int j = 0;
-                while ((currLine = bReader.readLine()) != null) {
-                    double currDouble = Double.parseDouble(currLine);
-                    a[j] = currDouble;
-                    j++;
-                }
-                System.out.println(files[count].getName());
-                timeSortsInMs(a);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    private static void timeSortsInMs(double[] a) {
-        long startTime, endTime, duration;
-
-        startTime = System.nanoTime();
-        insertionSort(a);
-        endTime = System.nanoTime();
-        duration = endTime - startTime;
-        System.out.println("insertion : " +duration + " ns \t\t| " + duration/1e6 + " ms" );
-
-        startTime = System.nanoTime();
-        quickSort(a);
-        endTime = System.nanoTime();
-        duration = endTime - startTime;
-        System.out.println("quick     : " + duration + " ns \t\t| " + duration/1e6 + " ms" );
-
-        startTime = System.nanoTime();
-        mergeSortIterative(a);
-        endTime = System.nanoTime();
-        duration = endTime - startTime;
-        System.out.println("merge iter: " + duration + " ns \t\t| " + duration/1e6 + " ms" );
-
-        startTime = System.nanoTime();
-        mergeSortRecursive(a);
-        endTime = System.nanoTime();
-        duration = endTime - startTime;
-        System.out.println("merge recu: " + duration + " ns \t\t| " + duration/1e6 + " ms" );
-
-        startTime = System.nanoTime();
-        selectionSort(a);
-        endTime = System.nanoTime();
-        duration = endTime - startTime;
-        System.out.println("selection : " + duration + " ns \t\t| " + duration/1e6 + " ms" + "\n");
-
-    }
+//    public static void main(String[] args) {
+//        FileReader fReader;
+//
+//        //saving file paths to file array
+//        File files[] = new File[7];
+//        files[0] = new File("./src/numbers10.txt");
+//        files[1] = new File("./src/numbers100.txt");
+//        files[2] = new File("./src/numbers1000.txt");
+//        files[3] = new File("./src/numbers1000Duplicates.txt");
+//        files[4] = new File("./src/numbersNearlyOrdered1000.txt");
+//        files[5] = new File("./src/numbersReverse1000.txt");
+//        files[6] = new File("./src/numbersSorted1000.txt");
+//
+//        int arraySize = 1;
+//        for (int count = 0; count < 7; count++) {
+//            try {
+//                fReader = new FileReader(files[count]);
+//                BufferedReader bReader = new BufferedReader(fReader);
+//
+//                if (count < 3) arraySize *= 10;
+//                double a[] = new double[arraySize];
+//
+//                String currLine;
+//                int j = 0;
+//                while ((currLine = bReader.readLine()) != null) {
+//                    double currDouble = Double.parseDouble(currLine);
+//                    a[j] = currDouble;
+//                    j++;
+//                }
+//                System.out.println(files[count].getName());
+//                timeSortsInMs(a);
+//
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
+//
+//    public static void timeSortsInMs(double[] a) {
+//        long startTime, endTime, duration;
+//
+//        startTime = System.nanoTime();
+//        insertionSort(a);
+//        endTime = System.nanoTime();
+//        duration = endTime - startTime;
+//        System.out.println("insertion : " +duration + " ns \t\t| " + duration/1e6 + " ms" );
+//
+//        startTime = System.nanoTime();
+//        quickSort(a);
+//        endTime = System.nanoTime();
+//        duration = endTime - startTime;
+//        System.out.println("quick     : " + duration + " ns \t\t| " + duration/1e6 + " ms" );
+//
+//        startTime = System.nanoTime();
+//        mergeSortIterative(a);
+//        endTime = System.nanoTime();
+//        duration = endTime - startTime;
+//        System.out.println("merge iter: " + duration + " ns \t\t| " + duration/1e6 + " ms" );
+//
+//        startTime = System.nanoTime();
+//        mergeSortRecursive(a);
+//        endTime = System.nanoTime();
+//        duration = endTime - startTime;
+//        System.out.println("merge recu: " + duration + " ns \t\t| " + duration/1e6 + " ms" );
+//
+//        startTime = System.nanoTime();
+//        selectionSort(a);
+//        endTime = System.nanoTime();
+//        duration = endTime - startTime;
+//        System.out.println("selection : " + duration + " ns \t\t| " + duration/1e6 + " ms" + "\n");
+//
+//    }
 
 }//end class

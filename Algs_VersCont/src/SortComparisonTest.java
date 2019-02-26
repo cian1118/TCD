@@ -31,13 +31,15 @@ public class SortComparisonTest
      * Check that the methods work for empty arrays
      */
     @Test
-    public void testEmpty()
-    {
+    public void testEmpty() {
+        double empty[] = {};
+
+        SortComparison.insertionSort(empty);
+        SortComparison.quickSort(empty);
+        SortComparison.mergeSortIterative(empty);
+        SortComparison.mergeSortRecursive(empty);
+        SortComparison.selectionSort(empty);
     }
-
-
-    // TODO: add more tests here. Each line of code and ech decision in Collinear.java should
-    // be executed at least once from at least one test.
 
     @Test
     public void insertionSortTest() {
@@ -70,13 +72,8 @@ public class SortComparisonTest
      *  Use this main method to create the experiments needed to answer the experimental performance questions of this assignment.
      *
      */
-    public static void main(String[] args)
-    {
-        //TODO: implement this method
-        /* runs all the experiments on SortComparison
-        described below and prints the time in milliseconds
-        that each method execution took
-        */
+    public static void main(String[] args) {
+
     }
 
 }
