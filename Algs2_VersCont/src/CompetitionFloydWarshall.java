@@ -12,16 +12,16 @@
  *    ï‚· The city is a collection of intersections in which some pairs are connected by one-way
  * streets that the contestants can use to traverse the city.
  *
- * This class implements the competition using Dijkstra's algorith  m
+ * This class implements the competition using Floyd-Warshall algorithm
  */
 
-public class CompetitionDijkstra {
+public class CompetitionFloydWarshall {
 
     /**
      * @param filename: A filename containing the details of the city road network
      * @param sA, sB, sC: speeds for 3 contestants
      */
-    CompetitionDijkstra (String filename, int sA, int sB, int sC){
+    CompetitionFloydWarshall (String filename, int sA, int sB, int sC){
 
         //TODO
     }
