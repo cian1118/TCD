@@ -1,1 +1,15 @@
+#INTELLIJ
+*.iml
 .idea/
+*.ipr
+*.iws
+out/
+.idea_modules/
+
+#JAVA
+*.class
+.mtj.tmp/
+*.jar
+*.war
+*.ear
+hs_err_pid*
