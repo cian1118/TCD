@@ -5,7 +5,7 @@
  * It should be clear that the contestants may arrive at the intersections at different times, in
  * which case, the first to arrive can wait until the others arrive.
  * From an estimated walking speed for each one of the three contestants, ACM wants to determine the
- * minimum time that a live TV broadcast should last to cover their journey regardless of the contestantsâ€™
+ * minimum time that a live TV broadcast should last to cover their journey regardless of the contestants'
  * initial positions and the intersection they finally meet. You are hired to help ACM answer this question.
  * You may assume the following:
  *    ï‚· Each contestant walks at a given estimated speed.
@@ -26,11 +26,10 @@ public class CompetitionFloydWarshall {
         //TODO
     }
 
-
     /**
      * @return int: minimum minutes that will pass before the three contestants can meet
      */
-    public int timeRequiredforCompetition(){
+    public int timeRequiredforCompetition() {
 
         //TO DO
         return -1;
