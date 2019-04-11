@@ -15,8 +15,6 @@
  * This class implements the competition using Dijkstra's algorithm
  */
 
-
-import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,15 +34,19 @@ public class CompetitionDijkstra {
     private TreeMap<Integer, Node> treeMap;
 
     CompetitionDijkstra (String filename, int sA, int sB, int sC){
-        readInFile(filename);
         this.sA = sA;
         this.sB = sB;
         this.sC = sC;
         this.readInFile(filename);
-        //TODO
     }
 
     private void readInFile(String filename) {
+
+        slowest = Math.min(sA, sB);
+        slowest = Math.min(slowest, sC);
+        if (filename == null) slowest = -1;
+        treeMap = new TreeMap<>();
+
         try {
             FileReader fReader = new FileReader(filename);
             Scanner scanner = new Scanner(fReader);
