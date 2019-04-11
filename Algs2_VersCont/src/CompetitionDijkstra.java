@@ -28,7 +28,7 @@ public class CompetitionDijkstra {
      * @param sA, sB, sC: speeds for 3 contestants
      */
     private int sA, sB, sC; //static?
-    private int slowest;
+    public int slowest;
     //metres per minute: >= 50 and <= 100
 
     private TreeMap<Integer, Node> treeMap;
