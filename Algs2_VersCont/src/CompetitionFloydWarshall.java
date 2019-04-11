@@ -15,24 +15,106 @@
  * This class implements the competition using Floyd-Warshall algorithm
  */
 
-public class CompetitionFloydWarshall {
+import java.io.BufferedReader;
+import java.io.FileReader;
 
+public class CompetitionFloydWarshall {
     /**
      * @param filename: A filename containing the details of the city road network
      * @param sA, sB, sC: speeds for 3 contestants
      */
-    CompetitionFloydWarshall (String filename, int sA, int sB, int sC){
 
-        //TODO
+    private static final double INF = Integer.MAX_VALUE / 2;
+    double array2D[][];    // [from][to]
+    boolean usableFile = true;
+    int sA, sB, sC;
+    int intersections;
+    int streets;
+    int slowest;
+
+    CompetitionFloydWarshall (String filename, int sA, int sB, int sC){
+        this.sA = sA;
+        this.sB = sB;
+        this.sC = sC;
+        this.makeArray(filename);
+    }
+
+    private void makeArray(String filename) {
+        try {
+            if (filename == null) {
+                usableFile = false;
+                slowest = -1;
+            } else {
+                FileReader fReader = new FileReader(filename);
+                BufferedReader bReader = new BufferedReader(fReader);
+                intersections = Integer.parseInt(bReader.readLine());
+                streets = Integer.parseInt(bReader.readLine());
+
+                if (intersections == 0 || streets == 0) {
+                    usableFile = false;
+                }
+
+                array2D = new double[intersections][streets];
+                for (int i = 0; i < intersections; i++){
+                    for (int j = 0; j < intersections; j++){
+                        array2D[i][j] = INF;
+                    }
+                }
+
+                String line = bReader.readLine();
+                while((line != null)){
+                    String[] splitLine = line.trim().split(" ");
+                    array2D[Integer.parseInt(splitLine[0])][Integer.parseInt(splitLine[1])] = Double.parseDouble(splitLine[2]);
+                    line = bReader.readLine();
+                }
+                bReader.close();
+            }
+        } catch (Exception e) {
+            usableFile = false;
+            slowest = -1;
+            e.printStackTrace();
+        }
     }
 
     /**
      * @return int: minimum minutes that will pass before the three contestants can meet
      */
     public int timeRequiredforCompetition() {
+        if((sA > 100 || sA < 50) || (sB > 100 || sB < 50) || (sC > 100 || sC < 50)) {
+            return -1;
+        }
 
-        //TO DO
-        return -1;
+        if(!usableFile){
+            return -1;
+        }
+
+        for (int k = 0; k < intersections; k++){
+            for (int i = 0; i < intersections; i++){
+                for (int j = 0; j < intersections; j++){
+                    if(array2D[i][k] + array2D[k][j] < array2D[i][j]){
+                        array2D[i][j] = array2D[i][k] + array2D[k][j];
+                    }
+                }
+            }
+        }
+        double dist = getMax();
+        if(dist == INF){
+            return -1;
+        }
+        dist = dist * 1000;   //KM to metres
+
+        return (int) Math.ceil(dist / slowest); //dist / speed = time
     }
 
+    private double getMax(){
+        double dist = -1;
+        for (int i = 0; i < intersections; i++){
+            for (int j = 0; j < intersections; j++){
+                if(array2D[i][j] > dist && i != j){
+                    dist = array2D[i][j];
+                }
+            }
+        }
+        return dist;
+    }
 }

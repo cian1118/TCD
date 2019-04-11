@@ -42,8 +42,7 @@ public class CompetitionDijkstra {
 
     private void readInFile(String filename) {
 
-        slowest = Math.min(sA, sB);
-        slowest = Math.min(slowest, sC);
+        slowest = Math.min(Math.min(sA, sB), sC);
         if (filename == null) slowest = -1;
         treeMap = new TreeMap<>();
 
