@@ -19,24 +19,28 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class CompetitionDijkstra {
     /**
      * @param filename: A filename containing the details of the city road network
      * @param sA, sB, sC: speeds for 3 contestants
      */
-    private int intersections;
-    private int streets;
     private int sA, sB, sC; //static?
+    private int slowest;
     //metres per minute: >= 50 and <= 100
+
+    private TreeMap<Integer, Node> treeMap;
 
     CompetitionDijkstra (String filename, int sA, int sB, int sC){
         readInFile(filename);
         this.sA = sA;
         this.sB = sB;
         this.sC = sC;
-
+        this.readInFile(filename);
         //TODO
     }
 
@@ -45,25 +49,114 @@ public class CompetitionDijkstra {
             FileReader fReader = new FileReader(filename);
             Scanner scanner = new Scanner(fReader);
 
-            this.intersections = scanner.nextInt();
-            this.streets = scanner.nextInt();
+            int intersections = scanner.nextInt();
+            int streets = scanner.nextInt();
 
-            //nextInt, nextInt, nextDouble
+            for (int i = 0; i < streets; i++) {
+                if (scanner.hasNext()) {
+                    int intersection1 = scanner.nextInt();
+                    int intersection2 = scanner.nextInt();
 
+                    double dist = scanner.nextDouble() * 1000; //*1000 to change from KM to metres
+                    Node n1, n2;
 
+                    if (treeMap.get(intersection1) == null) {
+                        n1 = new Node(intersection1);
+                        treeMap.put(intersection1, n1);
+                    } else {
+                        n1 = treeMap.get(intersection1);
+                    }
+
+                    if (treeMap.get(intersection2) == null) {
+                        n2 = new Node(intersection2);
+                        treeMap.put(intersection2, n2);
+                    } else n2 = treeMap.get(intersection2);
+
+                    n1.addAdj(n2, dist);
+                } else {
+                    break;
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    private double getLowestCost(int start) {
+
+        LinkedList<Node> nodes = new LinkedList<>();
+        for (Node n : treeMap.values()) {
+            if (n.id == start) {
+                n.cost = 0;
+            } else {
+                n.cost = Double.MAX_VALUE;
+            }
+            nodes.add(n);
+        }
+
+        for (int i = 0; i < treeMap.values().size(); i++) {
+            for (Node n : nodes) {
+                for (Route route : n.paths) {
+                    double newCost = n.cost + route.cost;
+                    if (newCost < route.dest.cost) {
+                        route.dest.cost = newCost;
+                    }
+                }
+            }
+        }
+
+        double maximum = Double.MIN_VALUE;
+        for (Node n : treeMap.values()) {
+            if (n.cost == Double.MAX_VALUE) { //unknown cost
+                return n.cost;
+            } else if (n.cost > maximum) {
+                maximum = n.cost;
+            }
+        }
+        return maximum;
+    }
+
+    private class Node {
+        int id;
+        double cost = Double.MAX_VALUE; //unknown cost
+        ArrayList<Route> paths = new ArrayList<>();
+
+        Node(int id) {
+            this.id = id;
+        }
+
+        void addAdj(Node node, double cost) {
+            paths.add(new Route(node, cost));
+        }
+    }
+
+    private class Route {
+        Node dest;
+        double cost;
+
+        Route(Node dest, double cost) {
+            this.dest = dest;
+            this.cost = cost;
+        }
+    }
 
     /**
      * @return int: minimum minutes that will pass before the three contestants can meet
      */
     public int timeRequiredforCompetition() {
+        if (treeMap.size() == 0 || slowest <= 0) {
+            return -1;
+        }
 
-        //TO DO
-        return -1;
+        double longestDist = -1;
+        for (Node n : treeMap.values()) {
+            double dist = getLowestCost(n.id);
+            if (dist == Double.MAX_VALUE) {
+                return -1;
+            }
+            longestDist = Math.max(longestDist, dist);
+        }
+        return (int) Math.ceil(longestDist / slowest); // dist / speed = time
     }
 
 }
