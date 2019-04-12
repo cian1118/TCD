@@ -6,7 +6,7 @@ public class CompetitionTests {
 
     @Test
     public void testDijkstraConstructor() {
-        CompetitionDijkstra competitionDijkstra = new CompetitionDijkstra("tinyEWD.txt", 60, 70, 80);
+        CompetitionDijkstra competitionDijkstra = new CompetitionDijkstra("tinyEWD.txt", 50, 80, 60);
         assertEquals("fail", competitionDijkstra.slowest, 50);
     }
 

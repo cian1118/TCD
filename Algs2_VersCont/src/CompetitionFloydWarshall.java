@@ -25,11 +25,11 @@ public class CompetitionFloydWarshall {
      */
 
     private static final double INF = Integer.MAX_VALUE / 2;
-    double array2D[][];    // [from][to]
-    boolean usableFile = true;
-    int sA, sB, sC;
-    int intersections;
-    int streets;
+    private double array2D[][];    // [from][to]
+    private boolean usableFile = true;
+    private int sA, sB, sC;
+    private int intersections;
+    private int streets;
     int slowest;
 
     CompetitionFloydWarshall (String filename, int sA, int sB, int sC){
@@ -40,6 +40,7 @@ public class CompetitionFloydWarshall {
     }
 
     private void makeArray(String filename) {
+        slowest = Math.min(Math.min(sA, sB), sC);
         try {
             if (filename == null) {
                 usableFile = false;
