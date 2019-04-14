@@ -26,18 +26,18 @@ public class CompetitionFloydWarshall {
 
     private static final double INF = Integer.MAX_VALUE / 2;
     private double array2D[][];    // [from][to]
-    private boolean usableFile = true;
-    private int sA, sB, sC;
-    private int intersections;
-    private int streets;
-    int slowest;
 
-    CompetitionFloydWarshall (String filename, int sA, int sB, int sC){
+    CompetitionFloydWarshall (String filename, int sA, int sB, int sC) {
         this.sA = sA;
         this.sB = sB;
         this.sC = sC;
         this.makeArray(filename);
     }
+
+    private int sA, sB, sC;
+    int slowest;
+    private boolean usableFile = true;
+    private int intersections;
 
     private void makeArray(String filename) {
         slowest = Math.min(Math.min(sA, sB), sC);
@@ -49,7 +49,7 @@ public class CompetitionFloydWarshall {
                 FileReader fReader = new FileReader(filename);
                 BufferedReader bReader = new BufferedReader(fReader);
                 intersections = Integer.parseInt(bReader.readLine());
-                streets = Integer.parseInt(bReader.readLine());
+                int streets = Integer.parseInt(bReader.readLine());
 
                 if (intersections == 0 || streets == 0) {
                     usableFile = false;
