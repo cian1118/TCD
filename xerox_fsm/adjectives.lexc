@@ -1,0 +1,106 @@
+Multichar_Symbols
++Adj +Sg +Pl +Bare    ! Adjective, Singular, Plural, Bare Stem
++Masc +Fem +Neu       ! Masculine, Feminine, Neuter (Genders)
++Nom +Acc +Dat +Gen   ! Nominative, Accusative, Dative, Genetive (Cases)
++W +S +M              ! Weak, Strong, Mixed (Adjective Declension)
+
+Lexicon Root
+  Adjectives;
+
+Lexicon Adjectives
+  gut+Adj:gut           Ending;
+  klein+Adj:klein       Ending;
+  schön+Adj:schön       Ending;
+  blau+Adj:blau         Ending;
+  grün+Adj:grün         Ending;
+  groß+Adj:groß         Ending;
+  trocken+Adj:trocken   Ending; ! irregular - stem change
+  edel+Adj:edel         Ending; ! irregular - stem change
+  dunkel+Adj:dunkel     Ending; ! irregular - stem change
+  hoch+Adj:hoch         Ending; ! irregular - stem change
+  teuer+Adj:teuer       Ending; ! irregular - stem change
+                        ! (see rules.regex for replace rules)
+
+Lexicon Ending
+! WEAK MASCULINE
++Sg+Masc+Nom+W:e        #;
++Sg+Masc+Acc+W:en       #;
++Sg+Masc+Dat+W:en       #;
++Sg+Masc+Gen+W:en       #;
+
+! WEAK FEMININE
++Sg+Fem+Nom+W:e         #;
++Sg+Fem+Acc+W:e         #;
++Sg+Fem+Dat+W:en        #;
++Sg+Fem+Gen+W:en        #;
+
+! WEAK NEUTER
++Sg+Neu+Nom+W:e         #;
++Sg+Neu+Acc+W:e         #;
++Sg+Neu+Dat+W:en        #;
++Sg+Neu+Gen+W:en        #;
+
+! WEAK PLURAL
++Pl+Nom+W:en            #;
++Pl+Acc+W:en            #;
++Pl+Dat+W:en            #;
++Pl+Gen+W:en            #;
+
+!------------------------
+
+! STRONG MASCULINE
++Sg+Masc+Nom+S:er       #;
++Sg+Masc+Acc+S:en       #;
++Sg+Masc+Dat+S:em       #;
++Sg+Masc+Gen+S:en       #;
+
+! STRONG FEMININE
++Sg+Fem+Nom+S:e         #;
++Sg+Fem+Acc+S:e         #;
++Sg+Fem+Dat+S:en        #;
++Sg+Fem+Gen+S:en        #;
+
+! STRONG NEUTER
++Sg+Neu+Nom+S:es        #;
++Sg+Neu+Acc+S:es        #;
++Sg+Neu+Dat+S:em        #;
++Sg+Neu+Gen+S:en        #;
+
+! STRONG PLURAL
++Pl+Nom+S:e             #;
++Pl+Acc+S:e             #;
++Pl+Dat+S:en            #;
++Pl+Gen+S:er            #;
+
+!------------------------
+
+! MIXED MASCULINE
++Sg+Masc+Nom+M:er       #;
++Sg+Masc+Acc+M:en       #;
++Sg+Masc+Dat+M:en       #;
++Sg+Masc+Gen+M:en       #;
+
+! MIXED FEMININE
++Sg+Fem+Nom+M:e         #;
++Sg+Fem+Acc+M:e         #;
++Sg+Fem+Dat+M:en        #;
++Sg+Fem+Gen+M:en        #;
+
+! MIXED NEUTER
++Sg+Neu+Nom+M:es        #;
++Sg+Neu+Acc+M:es        #;
++Sg+Neu+Dat+M:en        #;
++Sg+Neu+Gen+M:en        #;
+
+! MIXED PLURAL
++Pl+Nom+M:en            #;
++Pl+Acc+M:en            #;
++Pl+Dat+M:en            #;
++Pl+Gen+M:en            #;
+
+!------------------------
+
+! BARE STEM
++Bare:0                 #;
+
+END

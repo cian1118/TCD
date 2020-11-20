@@ -1,0 +1,24 @@
+adrWord = address cdWord
+adrLetters = address cdLetters
+
+result = 1
+currElemA = adrWord
+notPoss = false
+
+while (currElemA != 0 && notPoss == false) {
+  currLetter = adrLetters
+  if (currLetter == 0) {
+      notPoss = true
+  } else {
+    if (currElemA == currLetter) {
+    Memory.byte[adrLetters] = "$"
+    adrWord + 1
+    adrLetters = address cdLetters
+    } else {
+      adrLetters + 1
+    }
+  }
+}
+if (notPoss == true) {
+  result = 0
+}

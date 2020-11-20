@@ -1,0 +1,49 @@
+adrA = address AElems
+ASize = address ASize
+
+adrB = address BElems
+BSize = address BSize
+
+adrC = address CElems
+
+boolean repeated = false
+//Repeat from here
+boolean inAandB = false
+countA = 0
+
+while (countA != ASize) {
+  countB = 0
+  elemA = Memory.word[adrA]
+
+  while (countB != BSize && !inAandB) {
+    elemB = Memory.word[adrB]
+    if (elemA == elemB) {
+      inAandB = true
+    }
+    adrB + 4
+    countB++
+  }
+
+  if (!inAandB) {
+    Memory.word[adrC] = elemA
+    adrC + 4
+  }
+  adrA + 4
+  countA++
+
+  if (repeat) {
+    adrA = address AElems
+  } else {
+    adrB = address BElems
+  }
+  inAandB = false
+}
+
+if (!repeated) {
+adrA = address BElems
+ASize = address BSize
+adrB = address AElems
+BSize = address AElems
+
+repeated = true
+}

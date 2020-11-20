@@ -1,0 +1,13 @@
+echo << BUILDING FST >>
+clear stack
+read lexc < adjectives.lexc
+define LEX
+read regex < rules.regex
+define RUL
+read regex LEX .o. RUL;
+echo << LEXICAL (UPPER) SIDE >>
+print upper
+echo << SURFACE (LOWER) SIDE >>
+print lower
+save adjs_german.fst
+echo << END OF SCRIPT >>

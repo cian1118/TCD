@@ -1,0 +1,79 @@
+
+writeInfoLine: "Extracting formants..."
+
+thisSound$ = selected$("Sound")
+thisTextGrid$ = selected$("TextGrid")
+
+#Extract number of points in the formants tier
+select TextGrid 'thisTextGrid$'
+#tier3 is formants tier
+numberOfPoints = Get number of points: 3
+appendInfoLine: "No. of points: ", numberOfPoints
+
+# Create the Formant Object
+select Sound 'thisSound$'
+To Formant (burg)... 0 5 5000 0.025 50
+
+# Create the output file and write the first line.
+outputPath$ = "/Users/*user*/Desktop/formants_out.csv"
+writeFileLine: "'outputPath$'", "point,time,duration,symbol,F1,F2,F3,point2,diphthong,F1',F2',F3'"
+
+for thisPoint from 1 to numberOfPoints
+
+	select TextGrid 'thisTextGrid$'
+	timePoint = Get time of point: 3, thisPoint
+	thisInterval = Get interval at time: 2, timePoint
+	thisIntervalLabel = Get label of interval: 2, thisInterval
+	thisLabel$ = Get label of point: 3, thisPoint
+	appendInfo: thisLabel$
+
+	vowelStart = Get start point: 2, thisInterval
+	vowelEnd = Get end point: 2, thisInterval
+	duration = vowelEnd - vowelStart
+
+	if thisPoint <> numberOfPoints
+		timePoint2 = Get time of point: 3, thisPoint + 1
+		thisLabel2$ = Get label of point: 3, thisPoint + 1
+	endif
+
+	diphthong = 0 ;boolean false
+
+	if timePoint > vowelStart and timePoint2 < vowelEnd
+		select Formant 'thisSound$'
+		f01 = Get value at time... 1 timePoint2 Hertz Linear
+		f02 = Get value at time... 2 timePoint2 Hertz Linear
+		f03 = Get value at time... 3 timePoint2 Hertz Linear
+
+		diphthong = 1 ;boolean true
+		appendInfo: thisLabel2$
+	endif
+
+	appendInfo: newline$
+
+	# Extract formant measurements
+	select Formant 'thisSound$'
+	f1 = Get value at time... 1 timePoint Hertz Linear
+	f2 = Get value at time... 2 timePoint Hertz Linear
+	f3 = Get value at time... 3 timePoint Hertz Linear
+
+	appendFile: "'outputPath$'",
+               	...thisPoint, ",",
+		...timePoint, ",",
+		...duration, ",",
+               	...thisLabel$, ",",
+               	...f1, ",",
+               	...f2, ",",
+               	...f3, ","
+	if diphthong = 1
+		thisPoint = thisPoint+1
+		appendFile: "'outputPath$'",
+			...thisPoint, ",",
+			...thisLabel2$, ",",
+	               	...f01, ",",
+	               	...f02, ",",
+	               	...f03
+	endif
+
+	appendFile: "'outputPath$'", newline$
+	diphthong = 0
+endfor

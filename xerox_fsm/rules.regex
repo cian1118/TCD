@@ -1,0 +1,10 @@
+# Replace Rules
+[ e l -> l || _ \.#. ] # el changes to l when an ending is present
+.o.
+[ e r -> r || _ \.#. ] # er changes to r when an ending is present
+.o.
+[ e n -> n || _ \.#. ] # en changes to n when an ending is present
+.o.
+
+#special case for 'hoch': becomes 'höh-' when an ending is present
+[ h o c h -> h o h || _ \.#. ];
