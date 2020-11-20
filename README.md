@@ -1,2 +1,2 @@
-# TCD
-Repository for college assignments and self study
+# Trinity College Dublin
+Repository for college assignments, homework and independent study.
