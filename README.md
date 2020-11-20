@@ -1,2 +1,2 @@
 # TCD
-Repository for college assignments and self study
+Repository for college assignments, homework and independent study.
